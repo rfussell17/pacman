@@ -3,6 +3,11 @@ const grid = document.querySelector('.grid')
 const scoreDisplay = document.querySelector('.score')
 let squares = []
 
+const UP = 38;
+const DOWN = 40;
+const LEFT = 37;
+const RIGHT = 39;
+
   // 0 - pac-dots
   // 1 - wall
   // 2 - ghost-lair
@@ -40,12 +45,64 @@ const layout = [
   1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 
 ]
 
-function createBoard(){
-  for(let i = 0; i < layout.length; i++){
-    const square = document.createElement('div')
-    grid.appendChild(square)
-    squares.push(square)
+//create board
+function createBoard() {
+  //for loop 
+  for (let i = 0; i < layout.length; i++) {
+      //create a square 
+      const square = document.createElement('div')
+      //put square in grid 
+      grid.appendChild(square)
+      //put square in sqaures array
+      squares.push(square)
+
+      if (layout[i] === 0) {
+          squares[i].classList.add('pac-dot')
+      } else if(layout[i] === 1) {
+          squares[i].classList.add('wall')
+      } else if(layout[i] === 3) {
+          squares[i].classList.add('power-pellet')
+      }
+      
+      
   }
 }
-
 createBoard()
+
+let pacmanCurrentIndex = 490;
+squares[pacmanCurrentIndex].classList.add('pacman')
+
+
+function control(e){
+  squares[pacmanCurrentIndex].classList.remove('pacman')
+
+  switch(e.keyCode) {
+    case UP:
+
+      console.log("pressed up")
+      if(pacmanCurrentIndex - width >= 0){
+        pacmanCurrentIndex -= width;
+      }
+      break;
+    case DOWN:
+      if (pacmanCurrentIndex + width < width * width){
+        pacmanCurrentIndex += width
+      }
+      break;
+    case LEFT:
+      if(pacmanCurrentIndex % width != 0){
+        pacmanCurrentIndex -= 1;
+       }
+      break;
+    case RIGHT:
+      if(pacmanCurrentIndex % width < width -1){
+        pacmanCurrentIndex += 1;
+      }
+
+      break;
+  }
+  squares[pacmanCurrentIndex].classList.add('pacman');
+
+}
+
+document.addEventListener('keyup', control)

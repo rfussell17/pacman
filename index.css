@@ -1,6 +1,7 @@
 html, body {
-  margin: 10;
+  margin: 0 auto;
   padding: 10;
+  text-align: center;
 }
 
 .grid {
@@ -9,6 +10,7 @@ html, body {
   border: 1px solid black;
   display: flex;
   flex-wrap: wrap;
+  margin: 0 auto;
 }
 
 .grid div {
@@ -33,7 +35,28 @@ html, body {
 }
 
 .pacman {
-  background-color: orange;
+  background-color: gold;
   border-radius: 7.5px;
+  border: none;
+}
+
+
+.blinky {
+  background-color: red;
+  border: none;
+}
+
+.pinky {
+  background-color: pink;
+  border: none;
+}
+
+.inky {
+  background-color: aqua;
+  border: none;
+}
+
+.clyde {
+  background-color: orange;
   border: none;
 }

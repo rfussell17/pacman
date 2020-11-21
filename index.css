@@ -28,6 +28,11 @@ html, body {
   background-color: blue;
 }
 
+.ghost {
+  border-top-right-radius: 7.5px;
+  border-top-left-radius: 7.5px;
+}
+
 .power-pellet {
   background-color: green;
   border-radius: 7.5px;
@@ -58,5 +63,10 @@ html, body {
 
 .clyde {
   background-color: orange;
+  border: none;
+}
+
+.scared-ghost {
+  background-color: aquamarine;
   border: none;
 }

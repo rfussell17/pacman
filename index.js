@@ -154,7 +154,6 @@ function powerPelletEaten() {
     squares[pacmanCurrentIndex].classList.remove("power-pellet");
     score += 10;
     ghosts.forEach((ghost) => (ghost.isScared = true));
-
     setTimeout(unScareGhosts, 10000);
   }
 }
@@ -183,7 +182,6 @@ ghosts.forEach((ghost) => moveGhost(ghost));
 
 //function to randomize ghost movement
 function moveGhost(ghost) {
-  console.log("moved ghost");
   const directions = [-1, +1, -width, +width];
   let direction = directions[Math.floor(Math.random() * directions.length)];
 
@@ -224,8 +222,8 @@ function checkGameOver(){
     !squares[pacmanCurrentIndex].classList.contains('scared-ghost') ) {
 
     ghosts.forEach(ghost => clearInterval(ghost.timerId));
-    document.removeEventListener('keyup', control)
-    gameBanner.textContent = "YOU LOSE"
+    document.removeEventListener('keydown', control)
+    gameBanner.textContent = "YOU LOSE."
   }
 }
 
@@ -233,8 +231,8 @@ function checkGameOver(){
 function checkGameWin(){
   if (score >= 400) {
     ghosts.forEach(ghost => clearInterval(ghost.timerId));
-    document.removeEventListener('keyup', control)
-    gameBanner.textContent = "YOU WIN"
+    document.removeEventListener('keydown', control)
+    gameBanner.textContent = "YOU WIN!"
   }
 }
 
